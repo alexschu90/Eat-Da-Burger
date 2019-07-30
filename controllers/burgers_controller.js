@@ -12,10 +12,10 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burgers", function(req, res) {
-  cat.create([
-    "name", "devour"
+  burger.create([
+    "name", "hungry"
   ], [
-    req.body.name, req.body.devour
+    req.body.name, req.body.hungry
   ], function(result) {
     res.json({ id: result.insertId });
   });
@@ -24,7 +24,7 @@ router.post("/api/burgers", function(req, res) {
 router.put("/api/burgers/:id", function(req, res) {
   var condition = "id = " + req.params.id;
   burger.update({
-    devour: req.body.devour
+    hungry: req.body.hungry
   }, condition, function(result) {
     if (result.changedRows == 0) {
       return res.status(404).end();

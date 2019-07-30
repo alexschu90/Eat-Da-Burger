@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/burger_style.css" type="text/css" />
+		<title>EAT-DA-BURGER!</title>
+		<script src="https://code.jquery.com/jquery.js"></script>
+	</head>
+	<body>
+		{{{ body }}}
+    <script>
+        $(function() {
+            $(".change-devour").on("click", function(event) {
+                var id = $(this).data("id");
+                var newDevour = $(this).data("newdevour");
+                var newDevourState = {
+                    hungry: newDevour
+                    };
+                $.ajax("/api/burgers/" + id, {
+                    type: "PUT",
+                    data: newDevourState
+                }).then(
+                function() {
+                    location.reload();
+                    }
+                );
+            });
+            $(".create-form").on("submit", function(event) {
+                event.preventDefault();
+                var newBurger = {
+                    name: $("#bn").val().trim(),
+                };
+                $.ajax("/api/burgers", {
+                    type: "POST",
+                    data: newBurger
+                }).then(
+                    function() {
+                        location.reload();
+                    }
+                );
+            });
+        });
+    </script>
+	</body>
+</html>

@@ -2,21 +2,24 @@
 
 <h2>Eat-Da-Burger!!</h2>
 
-<ul>
-  {{#each burgers}}
-    {{name}}
-    <button class="change-devour" data-id="{{id}}" data-newdevour="{{Devour}}">
-		Devour!
-	</button>
-  {{/each}}
-</ul>
 
 <ul>
   {{#each burgers}}
-    {{#unless hungry}}
+    {{#unless devour}}
+      {{> burgers/burger-block devour=true}}
     {{/unless}}
   {{/each}}
 </ul>
+
+
+<ul>
+  {{#each burgers}}
+    {{#if devour}}
+      {{> burgers/burger-block devour=false}}
+    {{/if}}
+  {{/each}}
+</ul>
+
 
 
 <h2>Add a Burger</h2>

@@ -6,16 +6,18 @@
 <ul>
   {{#each burgers}}
     {{#unless devour}}
-      {{> burgers/burger-block devour=true}}
+      {{> burger-block devour=true}}
     {{/unless}}
   {{/each}}
 </ul>
 
 
+
+<h2>Devoured!</h2>
 <ul>
   {{#each burgers}}
     {{#if devour}}
-      {{> burgers/burger-block devour=false}}
+      {{> burger-block devour=false}}
     {{/if}}
   {{/each}}
 </ul>
